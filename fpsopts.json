@@ -1,0 +1,13 @@
+{
+ "id": "fps_opts",
+ "name": "FPS Options",
+ "icon_path": "icon.png",
+ "icon_width": 32,
+ "author": ["ArgilRants"],
+ "description": "A small Lovely only mod that adds fps options to Video settings",
+ "prefix": "fpsopts",
+ "main_file": "steammodded.lua",
+ "priority": 0,
+ "version": "1.0.0",
+ "dependencies": ["Lovely (>=0.9)"]
+}

@@ -1,0 +1,40 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]] 
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.ROOT, config={align = "cm", padding = 0.05, colour = G.C.CLEAR}, nodes={'''
+position = 'after'
+payload = '''create_option_cycle({w = 4,scale = 0.8, label = b_set_fps, options = ml_fps_opt, opt_callback = 'change_fps', current_option = fpsopt_fps_opt}),'''
+match_indent = true
+
+[[patches]] 
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''elseif G.SETTINGS.QUEUED_CHANGE.vsync then'''
+position = 'before'
+payload = '''elseif G.SETTINGS.QUEUED_CHANGE.fps then
+can_apply = true'''
+match_indent = true
+
+[[patches]] 
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''--Set the vsync value, 0 is off 1 is on'''
+position = 'before'
+payload = '''
+if G.SETTINGS.QUEUED_CHANGE and G.SETTINGS.QUEUED_CHANGE.fps then
+compress_and_save("config/fpsopts.jkr", fpsopt_fps_opt)
+end
+G.FPS_CAP = (G.SETTINGS.QUEUED_CHANGE and G.SETTINGS.QUEUED_CHANGE.fps) or G.ARGS.fps_vals[fpsopt_fps_opt] or 500'''
+match_indent = true
+
+[[patches]]
+[patches.copy]
+target = "main.lua"
+position = "append"
+sources = [
+    "main.lua",
+]
