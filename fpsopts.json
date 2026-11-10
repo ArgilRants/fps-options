@@ -8,6 +8,6 @@
  "prefix": "fpsopts",
  "main_file": "steammodded.lua",
  "priority": 0,
- "version": "1.0.0",
+ "version": "1.0.1",
  "dependencies": ["Lovely (>=0.9)"]
 }

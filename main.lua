@@ -15,5 +15,5 @@ b_set_fps = "FPS"
 G.FUNCS.change_fps = function(args)
     G.ARGS.fps_vals = G.ARGS.fps_vals or {30, 60, 120, 240, 500}
     G.SETTINGS.QUEUED_CHANGE.fps = G.ARGS.fps_vals[args.to_key]
-    fpsopt_fps_opt = args.to_key
+    G.SETTINGS.QUEUED_CHANGE.fpskey = args.to_key
 end

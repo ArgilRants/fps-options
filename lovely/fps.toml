@@ -1,5 +1,5 @@
 [manifest]
-version = "1.0.0"
+version = "1.0.1"
 priority = 0
 
 [[patches]] 
@@ -26,6 +26,7 @@ pattern = '''--Set the vsync value, 0 is off 1 is on'''
 position = 'before'
 payload = '''
 if G.SETTINGS.QUEUED_CHANGE and G.SETTINGS.QUEUED_CHANGE.fps then
+fpsopt_fps_opt = G.SETTINGS.QUEUED_CHANGE.fpskey
 compress_and_save("config/fpsopts.jkr", fpsopt_fps_opt)
 end
 G.FPS_CAP = (G.SETTINGS.QUEUED_CHANGE and G.SETTINGS.QUEUED_CHANGE.fps) or G.ARGS.fps_vals[fpsopt_fps_opt] or 500'''
